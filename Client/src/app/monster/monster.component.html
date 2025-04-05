@@ -1,0 +1,20 @@
+<!-- Masthead Heading-->
+<h1 class="masthead-heading text-uppercase mb-0">{{ monster?.name }}</h1>
+<!-- Icon Divider-->
+<div class="divider-custom divider-light">
+    <div class="divider-custom-line"></div>
+    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+    <div class="divider-custom-line"></div>
+</div>
+<!-- Masthead Subheading-->
+<p class="masthead-subheading font-weight-light mb-0">{{ monster?.description }}</p>
+
+<!-- Form to Add a New Monster -->
+<form (ngSubmit)="addMonster()" class="mt-4">
+    <button type="button" class="btn btn-default text-white" (click)="generateMonster()">
+        New Monster
+      </button>
+      <button type="button" class="btn btn-default text-white" (click)="addMonster()">
+        Save Monster
+    </button>
+</form>
