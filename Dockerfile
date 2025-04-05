@@ -19,7 +19,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
 WORKDIR /app
 
 # Copy the Angular build output
-COPY --from=client-build /app/client/dist/client ./wwwroot
+COPY --from=client-build /app/client/dist/client/browser ./wwwroot
 
 # Copy the ASP.NET Core API build output
 COPY --from=service-build /app/service/out ./

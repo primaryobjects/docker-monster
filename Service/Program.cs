@@ -2,6 +2,7 @@ using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
 using Service.Database;
 using Service.Managers;
+
 var builder = WebApplication.CreateBuilder(args);
 if (builder.Environment.IsProduction())
 {
