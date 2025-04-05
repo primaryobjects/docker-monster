@@ -99,6 +99,7 @@ Base URL: `/api/monster`
 
 ## Project Structure
 
+```text
 MonsterService/
 ├── Client/                 # Angular client
 ├── Service/                # ASP.NET Core Web API
@@ -107,6 +108,7 @@ MonsterService/
 │   ├── Managers/           # Business logic
 │   ├── Types/              # Entity models
 ├── Dockerfile              # Docker configuration
+```
 
 ## Future Enhancements
 
