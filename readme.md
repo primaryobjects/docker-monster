@@ -2,7 +2,7 @@
 
 A full-stack application that includes an **ASP.NET Core Web API** for managing monsters and an **Angular client** for interacting with the API. The application uses an in-memory database for data storage and is containerized using Docker.
 
-![screenshot](/screenshot.gif)
+![screenshot](screenshot.png)
 
 ## Features
 
