@@ -1,0 +1,7 @@
+button.shift.disabled{
+    opacity: 0.25;
+}
+
+button.shift {
+    border: none;
+}

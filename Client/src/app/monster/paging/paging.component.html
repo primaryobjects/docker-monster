@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col col-2">
+        <button type="button" class="btn btn-default text-white shift" [ngClass]="monsters && index > 0 ? '' : 'disabled'" (click)="left()">
+            <fa-icon [icon]="faChevronLeft"></fa-icon>
+        </button>
+        <span style="font-size: 12px; opacity: .6; padding-top: 3px;">
+            {{ monsters && index > 0 ? monsters[index - 1].name : '' }}
+        </span>
+    </div>
+    <div class="col col-8">
+        <button type="button" class="btn btn-default text-white" (click)="generateMonster()">
+            New Monster
+        </button>
+        <button type="button" class="btn btn-default text-white" (click)="saveMonster(monsters ? monsters[index] : undefined)">
+            Save Monster
+        </button>
+    </div>
+    <div class="col col-2">
+        <button type="button" class="btn btn-default text-white shift" [ngClass]="monsters && index < monsters.length - 1 ? '' : 'disabled'" (click)="right()">
+            <fa-icon [icon]="faChevronRight"></fa-icon>
+        </button>
+        <span style="font-size: 12px; opacity: .6; padding-top: 3px;">
+            {{ monsters && index < monsters.length - 1 ? monsters[index + 1].name : '' }}
+        </span>
+    </div>
+</div>
+<div class="text-secondary">{{ this.index + 1 }} / {{ this.monsters?.length }}</div>

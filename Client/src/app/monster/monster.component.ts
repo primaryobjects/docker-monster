@@ -1,14 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { Monster } from '../monster';
 import { MonsterService } from '../monster.service';
 import { SessionService } from '../session.service';
+import { PagingComponent } from './paging/paging.component';
 
 @Component({
   selector: 'app-monster',
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, PagingComponent],
   templateUrl: './monster.component.html',
   styleUrl: './monster.component.css'
 })
@@ -17,8 +16,6 @@ export class MonsterComponent {
   monsters?: Monster[];
   monsterService: MonsterService = inject(MonsterService);
   sessionService: SessionService = inject(SessionService);
-  faChevronLeft = faChevronLeft;
-  faChevronRight = faChevronRight;
 
   constructor() {
     this.init();
@@ -40,25 +37,29 @@ export class MonsterComponent {
   }
 
   async generateMonster() {
-    this.monsters?.splice(this.index, 0, await this.monsterService.generateMonster());
-    this.monsters && this.sessionService.set({ monsters: this.monsters, index: this.index });
+    const monster: Monster = await this.monsterService.generateMonster();
+
+    if (this.monsters && this.index < this.monsters.length - 1) {
+      this.monsters?.splice(this.index, 0, monster);
+    }
+    else {
+      this.monsters?.push(monster);
+      this.index++;
+    }
+
+    this.save();
   }
 
-  async saveMonster() {
+  async saveMonster(monster: Monster) {
     try {
-      this.monsters && await this.monsterService.saveMonster(this.monsters[this.index]);
+      this.monsters && await this.monsterService.saveMonster(monster);
     } catch (error) {
       console.error('Error saving monster: ', error);
     }
   }
 
-  left() {
-    this.index > 0 && this.index--;
-    this.save();
-  }
-
-  right() {
-    this.monsters && this.index < this.monsters.length - 1 && this.index++;
+  update(index: number) {
+    this.index = index;
     this.save();
   }
 }
