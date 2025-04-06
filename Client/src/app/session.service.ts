@@ -5,15 +5,15 @@ import { Monster } from './monster';
   providedIn: 'root'
 })
 export class SessionService {
-  private monsterCache?: Monster;
+  private cache?: any;
 
   constructor() { }
 
-  getMonster(): Monster | undefined {
-    return this.monsterCache;
+  get(): any {
+    return this.cache;
   }
 
-  setMonster(monster: Monster): void {
-    this.monsterCache = monster;
+  set(obj: any): void {
+    this.cache = obj;
   }
 }

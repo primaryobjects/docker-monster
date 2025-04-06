@@ -1,5 +1,5 @@
 <!-- Masthead Heading-->
-<h1 class="masthead-heading text-uppercase mb-0">{{ monster?.name }}</h1>
+<h1 class="masthead-heading text-uppercase mb-0">{{ monsters && monsters[index].name }}</h1>
 <!-- Icon Divider-->
 <div class="divider-custom divider-light">
     <div class="divider-custom-line"></div>
@@ -7,14 +7,32 @@
     <div class="divider-custom-line"></div>
 </div>
 <!-- Masthead Subheading-->
-<p class="masthead-subheading font-weight-light mb-0">{{ monster?.description }}</p>
+<p class="masthead-subheading font-weight-light mb-0">{{ monsters && monsters[index].description }}</p>
 
-<!-- Form to Add a New Monster -->
-<form (ngSubmit)="addMonster()" class="mt-4">
-    <button type="button" class="btn btn-default text-white" (click)="generateMonster()">
-        New Monster
-      </button>
-      <button type="button" class="btn btn-default text-white" (click)="addMonster()">
-        Save Monster
-    </button>
-</form>
+<div class="row">
+    <div class="col col-2">
+        <button type="button" class="btn btn-default text-white shift" [ngClass]="monsters && index > 0 ? '' : 'disabled'" (click)="left()">
+            <fa-icon [icon]="faChevronLeft"></fa-icon>
+        </button>
+        <span style="font-size: 12px; opacity: .6; padding-top: 3px;">
+            {{ monsters && index > 0 ? monsters[index - 1].name : '' }}
+        </span>
+    </div>
+    <div class="col col-8">
+        <button type="button" class="btn btn-default text-white" (click)="generateMonster()">
+            New Monster
+        </button>
+        <button type="button" class="btn btn-default text-white" (click)="saveMonster()">
+            Save Monster
+        </button>
+    </div>
+    <div class="col col-2">
+        <button type="button" class="btn btn-default text-white shift" [ngClass]="monsters && index < monsters.length - 1 ? '' : 'disabled'" (click)="right()">
+            <fa-icon [icon]="faChevronRight"></fa-icon>
+        </button>
+        <span style="font-size: 12px; opacity: .6; padding-top: 3px;">
+            {{ monsters && index < monsters.length - 1 ? monsters[index + 1].name : '' }}
+        </span>
+    </div>
+</div>
+<div class="text-secondary">{{ this.index }} / {{ this.monsters?.length }}</div>
