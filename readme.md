@@ -4,6 +4,11 @@ A full-stack application that includes an **ASP.NET Core Web API** for managing 
 
 ![screenshot](screenshot.png)
 
+## Quick Start
+
+1. Download [Docker](https://www.docker.com/products/docker-desktop).
+2. Run the container `docker-compose up -d`.
+
 ## Features
 
 - **ASP.NET Core Web API**:
@@ -81,6 +86,30 @@ cd MonsterService
     ```
 
 3. Access the application at http://localhost:8080
+
+## Building and Publishing Docker Image
+
+After making changes to the project, the Docker container can be built and published to the Github Container Registry using the following steps.
+
+```bash
+docker login --username <USERNAME> --password <YOUR_PERSONAL_ACCESS_TOKEN> ghcr.io
+docker build -t ghcr.io/primaryobjects/docker-monster:latest .
+docker push ghcr.io/primaryobjects/docker-monster:latest
+```
+
+### Running the Docker Image
+
+The Docker image can be launched using the following command to read `docker-compose.yml`.
+
+```bash
+docker-compose up -d
+```
+
+Alternatively, manually launch the container.
+
+```bash
+docker run --name docker-monster-container -d -p 8080:80 ghcr.io/primaryobjects/docker-monster:latest
+```
 
 ## API Endpoints
 
