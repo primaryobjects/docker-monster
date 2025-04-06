@@ -1,0 +1,60 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Run server",
+        "type": "dotnet",
+        "request": "launch",
+        "projectPath": "${workspaceFolder}/Service/Service.csproj"
+      },
+      {
+        "name": "Run client",
+        "type": "node",
+        "request": "launch",
+        "program": "${workspaceFolder}/Client/node_modules/@angular/cli/bin/ng",
+        "args": ["serve"],
+        "cwd": "${workspaceFolder}/Client",
+        "console": "integratedTerminal",
+        "internalConsoleOptions": "neverOpen"
+      },
+      {
+        "name": "Publish",
+        "type": "node",
+        "request": "launch",
+        "program": "${workspaceFolder}/server.js",
+        "preLaunchTask": "build-and-publish",
+        "outFiles": [
+          "${workspaceFolder}/out/**/*.js"
+        ]
+      },
+      {
+        "name": "Docker build and run",
+        "type": "node",
+        "request": "launch",
+        "program": "${workspaceFolder}/server.js",
+        "preLaunchTask": "docker-run",
+        "cwd": "${workspaceFolder}",
+        "console": "integratedTerminal",
+        "internalConsoleOptions": "neverOpen"
+      },
+      {
+        "name": "Docker build github",
+        "type": "node",
+        "request": "launch",
+        "program": "${workspaceFolder}/server.js",
+        "preLaunchTask": "docker-ghcr-push",
+        "cwd": "${workspaceFolder}",
+        "console": "integratedTerminal",
+        "internalConsoleOptions": "neverOpen"
+      }
+    ],
+    "compounds": [
+      {
+        "name": "Run server and client",
+        "configurations": [
+          "Run server",
+          "Run client"
+        ]
+      }
+    ]
+  }

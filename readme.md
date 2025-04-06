@@ -2,12 +2,14 @@
 
 A full-stack application that includes an **ASP.NET Core Web API** for managing monsters and an **Angular client** for interacting with the API. The application uses an in-memory database for data storage and is containerized using Docker.
 
-![screenshot](screenshot.png)
+![screenshot](screenshot.gif)
 
 ## Quick Start
 
 1. Download [Docker](https://www.docker.com/products/docker-desktop).
 2. Run the container `docker-compose up -d`.
+
+*This will pull the container image from the GitHub Docker Registry.*
 
 ## Features
 

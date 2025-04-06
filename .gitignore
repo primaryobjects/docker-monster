@@ -17,7 +17,6 @@ obj/
 *.temp
 *.cache
 *.vs/
-.vscode/
 .idea/
 
 # Ignore Angular build outputs
